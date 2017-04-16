@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+$(if refresh-timeout)
+<meta http-equiv="refresh" content="$(refresh-timeout-secs)">
+$(endif)
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="expires" content="-1">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+   <!--   Slide down klik-->   
+   <script> 
+$(document).ready(function(){
+    $("#flip").click(function(){
+        $("#panel").slideToggle("slow");
+    });
+});
+
+</script> 
+
+
+<style type="text/css">
+
+.tabula{
+ 
+border-width: 2px; 
+border-collapse: collapse; 
+border-color: #c1c1c1; 
+border-radius: 2
+background-color: transparent;
+font-family: verdana;
+text-align: center;
+
+font-size: 14px;
+color: #fff;
+}
+
+
+</style>
+
+<script language="JavaScript">
+<!--
+$(if advert-pending == 'yes')
+    var popup = '';
+    function focusAdvert() {
+    if (window.focus) popup.focus();
+    }
+    function openAdvert() {
+    popup = open('$(link-advert)', 'hotspot_advert', '');
+    setTimeout("focusAdvert()", 1000);
+    }
+$(endif)
+    function openLogout() {
+    if (window.name != 'hotspot_status') return true;
+        open('$(link-logout)', 'hotspot_logout', 'toolbar=0,location=0,directories=0,status=0,menubars=0,resizable=1,width=280,height=250');
+    window.close();
+    return false;
+    }
+
+    </script>
+
+
+
+ <!--   Slide down klik
+<script>
+    $(document).ready(function(){
+      $('#parallax').parallax();
+    });
+
+</script>--> 
+        <title>KLIKADV HOTSPOT STATUS</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="assets/css/form-elements.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="assets/ico/favicon.png">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+
+    </head>
+
+    <body $(if advert-pending == 'yes')
+    onLoad="openAdvert()"
+$(endif)>
+
+        <!-- Top content -->
+        <div class="top-content">
+        
+            <div class="inner-bg">
+                <div class="container">
+                 <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2 text">
+
+                        <div class="parallax">
+                          <img src="assets/img/header/adv.png" style="opacity: 0.6;max-height: 130px">     </div>
+             
+                        
+                          <!--    <h1><strong>Welcome</strong></h1>-->
+                            
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3 form-box">
+                        	<div class="form-top">
+                        		<div class="form-top-left">
+                        			<h3><strong>Status</strong> HOTSPOT</h3>
+                            		<p>selamat Datang , <strong> $(username)!</strong></p>
+                        		</div>
+                        		<div class="form-top-right">
+                        			<i class="fa fa-lock"></i>
+                        		</div>
+                            </div>
+                            <div class="form-bottom">
+<table width="100%" height="100%" >
+
+<tr>
+<td align="center" valign="middle">
+			                    <form role="form" action="$(link-logout)" method="post" class="login-form" name="logout" onSubmit="return openLogout()">
+			                    	<div class="form-group">
+			                    		<table border="1px" class="tabula" cellspacing="3px" >
+                                        <tr><td align="right"><B>IP address:</td><td>$(ip)</td></tr>
+                                        <tr><td align="right"><B>MAC address:</td><td>$(mac)</td></tr>
+                                        <tr><td align="right"><B> bytes up:</td><td><font color="#00cc00"> $(bytes-in-nice)</font></td></tr>
+                                        <tr><td align="right"><B> bytes down:</td><td><font color="red">$(bytes-out-nice) </font></td></tr>
+                                         $(if session-time-left)
+    <tr><td align="right"> <B>Connected: </td><td> $(uptime)</td></tr>
+    <tr><td align="right"> <B>Session Time: </td><td>$(session-time-left)</td></tr>
+$(else)
+    <tr><td align="right"><B>Connected:</td><td>  $(uptime)</td></tr>
+$(endif)
+$(if blocked == 'yes')
+    <tr><td align="right"><B>status:</td><td><div style="color: #FF8080">
+<a href="$(link-advert)" target="hotspot_advert"> advertisement</a> required</div></td>
+$(elif refresh-timeout)
+    <tr><td align="right"><B>status refresh:</td><td> $(refresh-timeout)</td>
+$(endif)
+
+</table>
+
+			                        </div>
+                                    $(if login-by-mac != 'yes')
+<br>
+			                        <button type="submit" class="btn"><strong><img src="assets/img/header/adv13.png" style="background-position: center; max-height: 40px; max-width: 40px"> Disconnect  <strong></button>
+                                    $(endif)
+			                    </form>
+</td>
+</table>
+    <div id="foot"> <span style="color:#ededed; font-size: 12px"> Powered by    </span>  <strong><font style="font-weight: bold; font-size: 14px"> <p><a href="http://klikadv.com">PT. KLIKADV JAYA INTERNATIONAL</a></font><strong></strong> </p>
+          <span style="color:#fff;">
+           <div id="flip"> <strong> Explore<font  style="opacity: 0.4;font-size: 9px">[Click]</font>Internet </strong>
+           <div id="panel"> <table width="100%"> <tr> 
+           <td> <a href="https://www.facebook.com/" target="_blank">
+           <img src="assets/img/icon/fb.png" style="max-height: 50px;max-width: 50px">
+          </a>
+            </td>
+            <td><a href="http://www.youtube.com/" target="_blank">
+           <img src="assets/img/icon/yt.png" style="max-height: 50px;max-width: 50px">
+          </a>
+           
+            </td>
+             <td><a href="https://www.google.co.id" target="_blank">
+           <img src="assets/img/icon/go.png" style="max-height: 50px;max-width: 50px">
+          </a>
+
+            
+            </td>
+            <td><a href="https://www.gmail.com" target="_blank">
+           <img src="assets/img/icon/gm.png" style="max-height: 50px;max-width: 50px">
+          </a>
+            
+            </td>
+           </tr>
+           <tr>WORK HARD PLAY HARD</tr>
+           </table> 
+
+           <!--muh.imron@klikadv.com --> </div> </div>
+           </span>          
+        
+   
+
+        
+		                    </div>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+            
+        </div>
+
+
+        <!-- Javascript -->
+        <script src="assets/js/jquery-1.11.1.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/js/jquery.backstretch.min.js"></script>
+        <script src="assets/js/scripts.js"></script>
+        
+        <!--[if lt IE 10]>
+            <script src="assets/js/placeholder.js"></script>
+        <![endif]-->
+ 
+ 
+                             
+
+    </body>
+
+</html>
